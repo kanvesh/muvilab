@@ -55,7 +55,11 @@ if __name__ =="__main__":
     args = parser.parse_args()
 
     videoFileName = args.file_video.split("/")[-1].split(".")[0]
-    clips_folder = os.path.dirname(args.file_video) + "/clips_" + videoFileName
+    if os.path.dirname(args.file_video)=='':
+        path = os.getcwd()
+    else:
+        path = os.path.dirname(args.file_video)
+    clips_folder = path + "/clips_" + videoFileName
     json_file = args.file_video.replace("mp4", "json")
 
     
